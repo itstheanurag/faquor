@@ -1,9 +1,17 @@
+import Navbar from "./components/Navbar";
+import InputScreen from "./screens/InputScreen";
+
 export default function App() {
 
   return (
-    <div className="min-h-screen flex items-center p-4">
-      You Suck 
+    <div className="">
       {/* <ModeToggle /> */}
+      <div>
+
+      <Navbar />
+      <InputScreen />
+
+      </div>
     </div>
   );
 }

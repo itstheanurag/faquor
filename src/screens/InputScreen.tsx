@@ -6,6 +6,9 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { PhoneFrame } from "./PhoneFrame";
+import InstagramMessageScreen from "./InstagramScreen";
+import LinkedInMessageScreen from "./LinkdedInMessageScreen";
 
 const socialMediaPlatforms = [
   { name: "Facebook", value: "facebook" },
@@ -14,14 +17,14 @@ const socialMediaPlatforms = [
   { name: "LinkedIn", value: "linkedin" },
   { name: "Snapchat", value: "snapchat" },
   { name: "TikTok", value: "tiktok" },
-  { name: "YouTube", value: "youtube" },
-  { name: "Pinterest", value: "pinterest" },
-  { name: "Reddit", value: "reddit" },
+  // { name: "YouTube", value: "youtube" },
+  // { name: "Pinterest", value: "pinterest" },
+  // { name: "Reddit", value: "reddit" },
   { name: "WhatsApp", value: "whatsapp" },
   { name: "Telegram", value: "telegram" },
   { name: "Discord", value: "discord" },
-  { name: "Tumblr", value: "tumblr" },
-  { name: "GitHub", value: "github" },
+  // { name: "Tumblr", value: "tumblr" },
+  // { name: "GitHub", value: "github" },
 ];
 
 const MockType = [
@@ -64,7 +67,7 @@ const LabelBuilder = ({
   );
 };
 
-const InstagramMessageScreen = () => <div>📷 Instagram Message Screen</div>;
+// const InstagramMessageScreen = () => <div>📷 Instagram Message Screen</div>;
 const InstagramPostScreen = () => <div>📷 Instagram Post Screen</div>;
 const TwitterMessageScreen = () => <div>🐦 Twitter Message Screen</div>;
 const TwitterPostScreen = () => <div>🐦 Twitter Post Screen</div>;
@@ -77,8 +80,12 @@ const InputScreen = () => {
     const renderScreen = () => {
     if (!selectedPlatform || !selectedType) return <DefaultScreen />;
 
+     if (selectedPlatform === "linkedin" && selectedType === "message")
+      return <LinkedInMessageScreen />
+
     if (selectedPlatform === "instagram" && selectedType === "message")
-      return <InstagramMessageScreen />;
+      return <InstagramMessageScreen />
+       
 
     if (selectedPlatform === "instagram" && selectedType === "posts")
       return <InstagramPostScreen />;
@@ -93,8 +100,8 @@ const InputScreen = () => {
     return <div>🧪 No mock screen available for {selectedPlatform} - {selectedType}</div>;
   };
   return (
-    <div className="space-y-6 flex items-center justify-between max-width-lg mx-auto p-6">
-        <div>
+    <div className="space-y-6 flex items-center justify-center max-width-lg mx-auto p-6 gap-6">
+    <div>
       <h1 className="text-2xl font-bold">Social Media</h1>
 
       <LabelBuilder
@@ -110,10 +117,14 @@ const InputScreen = () => {
         values={MockType}
         callback={(value) => setSelectedType(value)}
       />
+    </div>
+
+
+       <PhoneFrame>
+        <div className="flex flex-col items-center justify-center space-y-4">
+            {renderScreen()}
         </div>
-
-
-       <div className="pt-6 border-t">{renderScreen()}</div>
+       </PhoneFrame>
     </div>
   );
 };

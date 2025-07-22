@@ -2,7 +2,7 @@ const InstagramMessageScreen = () => {
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-200 dark:border-zinc-700">
+      <div className="flex items-center justify-between px-4 py-2 border-b ">
         <span className="font-semibold">chat_user</span>
         <span className="text-blue-500 text-xs font-medium">Instagram</span>
       </div>

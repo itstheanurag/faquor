@@ -52,7 +52,7 @@ export const PhoneFrame = ({ children, phoneType }: PhoneFrameProps) => {
       <div className={`w-80 h-[650px] ${styles.frame}`}>
         <div className={`w-full h-full ${styles.screen}`}>
           {styles.notch && <div className={styles.notch} />}
-          <div className="h-full overflow-hidden">{children}</div>
+          <div className="h-full py-4 px-auto content-fit">{children}</div>
           {styles.homeIndicator && <div className={styles.homeIndicator} />}
         </div>
       </div>

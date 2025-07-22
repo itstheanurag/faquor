@@ -101,10 +101,10 @@ const InputScreen = () => {
   };
   return (
     <div className="space-y-6 flex items-center justify-center max-width-lg mx-auto p-6 gap-6">
-    <div>
+    <div className="flex flex-col items-center border rounded p-4"> 
       <h1 className="text-2xl font-bold">Social Media</h1>
-
-      <LabelBuilder
+      <div >
+        <LabelBuilder
         subheading="Pick a Platform"
         buttonName={selectedPlatform ? selectedPlatform : "Platform"}
         values={socialMediaPlatforms}
@@ -117,6 +117,12 @@ const InputScreen = () => {
         values={MockType}
         callback={(value) => setSelectedType(value)}
       />
+      </div>
+
+      <div className="border rounded p-4 mt-4 w-full text-center">
+        Screen For inputs
+      </div>
+     
     </div>
 
 

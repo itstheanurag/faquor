@@ -1,6 +1,4 @@
 import { Paperclip, Image, Send } from "lucide-react";
-import { PhoneFrame } from "./PhoneFrame";
-
 const MessageBubble = ({
   text,
   sent,
@@ -21,7 +19,7 @@ const MessageBubble = ({
 
 const LinkedInMessageScreen = () => {
   return (
-    <PhoneFrame>
+    <div>
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-200 dark:border-zinc-700">
         <div>
@@ -60,7 +58,7 @@ const LinkedInMessageScreen = () => {
           <Send size={18} />
         </button>
       </div>
-    </PhoneFrame>
+    </div>
   );
 };
 

@@ -7,9 +7,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { PhoneFrame } from "./PhoneFrame";
 import InstagramMessageScreen from "./instagram/InstagramMessageScreen";
-import LinkedInMessageScreen from "./LinkdedInMessageScreen";
 import type { MockType, PlatfromType } from "@/types";
-import { useState } from "react";
+import { mockTypeAtom, socialMediaAtom } from "@/hooks/atoms/atoms";
+import { useAtom } from "jotai";
+import LinkedInPostScreen from "./linkedIn/LinkedInPostScreen";
+import TwitterMessageScreen from "./tweeter/TwitterMessageScreen";
+import InstagramPostScreen from "./instagram/InstagramPostScreen";
+import TwitterPostScreen from "./tweeter/TwitterPostScreen";
+import LinkedInMessageScreen from "./linkedIn/LinkdedInMessageScreen";
 
 const socialMediaPlatforms: PlatfromType[] = [
   { name: "Facebook", value: "facebook" },
@@ -64,24 +69,24 @@ const LabelBuilder = ({
   );
 };
 
-const InstagramPostScreen = () => <div>📷 Instagram Post Screen</div>;
-const TwitterMessageScreen = () => <div>🐦 Twitter Message Screen</div>;
-const TwitterPostScreen = () => <div>🐦 Twitter Post Screen</div>;
 const DefaultScreen = () => <div>👀 Select both a platform and a type to continue.</div>;
 
 const InputScreen = () => {
-  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
-  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useAtom(socialMediaAtom)
+  const [selectedType, setSelectedType] = useAtom(mockTypeAtom)
 
     const renderScreen = () => {
     if (!selectedPlatform || !selectedType) return <DefaultScreen />;
 
-     if (selectedPlatform === "linkedin" && selectedType === "message")
-      return <LinkedInMessageScreen />
 
     if (selectedPlatform === "instagram" && selectedType === "message")
-      return <InstagramMessageScreen />
-       
+      return <InstagramMessageScreen />;
+
+    if (selectedPlatform === "linkedin" && selectedType === "posts")
+      return <LinkedInPostScreen />;
+
+        if (selectedPlatform === "linkedin" && selectedType === "message")
+      return <LinkedInMessageScreen />;
 
     if (selectedPlatform === "instagram" && selectedType === "posts")
       return <InstagramPostScreen />;

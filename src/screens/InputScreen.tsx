@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenuItem,
@@ -7,38 +6,36 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { PhoneFrame } from "./PhoneFrame";
-import InstagramMessageScreen from "./InstagramScreen";
+import InstagramMessageScreen from "./instagram/InstagramMessageScreen";
 import LinkedInMessageScreen from "./LinkdedInMessageScreen";
+import type { MockType, PlatfromType } from "@/types";
+import { useState } from "react";
 
-const socialMediaPlatforms = [
+const socialMediaPlatforms: PlatfromType[] = [
   { name: "Facebook", value: "facebook" },
   { name: "Twitter", value: "twitter" },
   { name: "Instagram", value: "instagram" },
   { name: "LinkedIn", value: "linkedin" },
   { name: "Snapchat", value: "snapchat" },
   { name: "TikTok", value: "tiktok" },
-  // { name: "YouTube", value: "youtube" },
-  // { name: "Pinterest", value: "pinterest" },
-  // { name: "Reddit", value: "reddit" },
   { name: "WhatsApp", value: "whatsapp" },
   { name: "Telegram", value: "telegram" },
   { name: "Discord", value: "discord" },
-  // { name: "Tumblr", value: "tumblr" },
-  // { name: "GitHub", value: "github" },
 ];
 
-const MockType = [
+const mockValues: MockType[] = [
   { name: "Message", value: "message" },
   { name: "Posts", value: "posts" },
 ];
 
+type LabelBuilderItem = { name: string; value: string };
+
 type LabelBuilderProps = {
   subheading: string;
   buttonName: string;
-  values: { name: string; value: string }[];
+  values: LabelBuilderItem[];
   callback?: (value: string) => void;
 };
-
 const LabelBuilder = ({
   subheading,
   buttonName,
@@ -67,7 +64,6 @@ const LabelBuilder = ({
   );
 };
 
-// const InstagramMessageScreen = () => <div>📷 Instagram Message Screen</div>;
 const InstagramPostScreen = () => <div>📷 Instagram Post Screen</div>;
 const TwitterMessageScreen = () => <div>🐦 Twitter Message Screen</div>;
 const TwitterPostScreen = () => <div>🐦 Twitter Post Screen</div>;
@@ -114,7 +110,7 @@ const InputScreen = () => {
       <LabelBuilder
         subheading="Pick Type:"
         buttonName={selectedType ? selectedType : "Type"}
-        values={MockType}
+        values={mockValues}
         callback={(value) => setSelectedType(value)}
       />
       </div>
@@ -126,11 +122,11 @@ const InputScreen = () => {
     </div>
 
 
-       <PhoneFrame>
-        <div className="flex flex-col items-center justify-center space-y-4">
-            {renderScreen()}
-        </div>
-       </PhoneFrame>
+       <PhoneFrame phoneType="iphone">
+  <div className="flex flex-col items-center justify-center space-y-4">
+    {renderScreen()}
+  </div>
+</PhoneFrame>
     </div>
   );
 };
